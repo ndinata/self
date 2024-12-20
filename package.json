@@ -3,6 +3,10 @@
   "type": "module",
   "version": "0.0.1",
   "private": "true",
+  "engines": {
+    "node": "20",
+    "pnpm": "9"
+  },
   "scripts": {
     "dev": "astro dev",
     "build": "pnpm lint && astro check && astro build",
