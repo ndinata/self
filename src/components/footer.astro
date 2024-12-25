@@ -1,0 +1,20 @@
+---
+const YEAR = "2024";
+const ASTRO_URL = "https://astro.build";
+---
+
+<footer class="container flex max-w-5xl flex-col gap-5 pb-12 pt-48">
+  <div
+    class="flex flex-col gap-2 py-6 text-center text-muted-foreground md:inline md:text-start"
+  >
+    <span class="block md:inline">© {YEAR} Nico Dinata.</span>
+    <span
+      >Built with <a
+        href={ASTRO_URL}
+        class="font-medium text-primary underline-offset-4 hover:underline"
+        target="_blank"
+        rel="noopener noreferrer">Astro</a
+      > ❤️</span
+    >
+  </div>
+</footer>
