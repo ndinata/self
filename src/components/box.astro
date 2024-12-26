@@ -1,0 +1,21 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+import { cn } from "@/styles/utils";
+
+type Props = HTMLAttributes<"fieldset"> & {
+  title?: string;
+  id?: string;
+};
+
+const { title, id, class: propClass, ...props } = Astro.props;
+---
+
+<fieldset {...props} id={id} class={cn("border p-0", propClass)}>
+  <legend class="ml-4 px-2"
+    ><a href={`#${id}`} class="text-lg font-medium hover:text-primary"
+      >{title}</a
+    ></legend
+  >
+  <slot />
+</fieldset>
