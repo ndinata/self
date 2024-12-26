@@ -47,32 +47,3 @@ export const EXPERIENCE = Object.freeze({
     "familiarity with design processes and tools",
   ],
 } as const);
-
-export const PROJECTS = Object.freeze({
-  mantram: {
-    name: "mantram",
-    summary:
-      "Mobile-friendly online library of Buddhist mantrams. Great performance and ergonomic DX — thanks to Astro, Tailwind, and Rust.",
-    urls: [
-      {
-        label: "site",
-        url: "https://mantram.blog/",
-      },
-      {
-        label: "source",
-        url: "https://github.com/ndinata/mantram/",
-      },
-    ],
-    techStack: ["Astro", "Reactjs", "TailwindCSS", "Rust"],
-  },
-} as const satisfies Record<string, Project>);
-
-type Project = {
-  name: string;
-  summary: string;
-  urls?: {
-    label: string;
-    url: string;
-  }[];
-  techStack: string[];
-};
