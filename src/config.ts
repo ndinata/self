@@ -5,7 +5,7 @@ export const SITE = Object.freeze({
 export const PROFILE = Object.freeze({
   email: "nicodnt@icloud.com",
   headline:
-    "i build purposeful mobile and web products. passionate about sustainable product development and dev tooling!",
+    "hi 👋 i build purposeful mobile and web products. passionate about sustainable product development and dev tooling!",
   currentWork: {
     position: "pondering code",
     company: {
@@ -20,6 +20,17 @@ export const PROFILE = Object.freeze({
 } as const);
 
 export const EXPERIENCE = Object.freeze({
+  pastWork: {
+    projects: [
+      { label: "Assemble", url: "https://assemble.com.au" },
+      { label: "carconnect", url: "https://carconnect.com.au" },
+      { label: "The Commons", url: "https://www.thecommons.com.au" },
+      {
+        label: "The Wine Collective",
+        url: "https://www.thewinecollective.com.au/",
+      },
+    ],
+  },
   tookit: [
     "React Native/Expo",
     "Swift/Java native modules",
