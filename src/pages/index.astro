@@ -1,26 +1,12 @@
 ---
+import "@/styles/global.css";
 
+import ExperienceSection from "@/components/home/experience-section.astro";
+import HeadlineSection from "@/components/home/headline-section.astro";
+import RootLayout from "@/layouts/root.astro";
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Astro Basics</title>
-  </head>
-  <body>
-    <h1>hello, world!</h1>
-  </body>
-</html>
-
-<style>
-  html,
-  body {
-    margin: 0;
-    width: 100%;
-    height: 100%;
-  }
-</style>
+<RootLayout title="nico dinata">
+  <HeadlineSection />
+  <ExperienceSection />
+</RootLayout>
