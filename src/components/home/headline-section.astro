@@ -1,0 +1,36 @@
+---
+import Box from "@/components/box.astro";
+import Link from "@/components/link.astro";
+import { PROFILE } from "@/config";
+
+const MAIL_URL = `mailto:${PROFILE.email}`;
+---
+
+<section class="container flex flex-col py-10">
+  <Box title="nico dinata" id="nico-dinata">
+    <div class="flex flex-col gap-8 p-6">
+      <p>{PROFILE.headline}</p>
+
+      <p>
+        currently {PROFILE.currentWork.position} @ <Link
+          href={PROFILE.currentWork.company.url}
+          >{PROFILE.currentWork.company.name}</Link
+        >.
+      </p>
+
+      <div>
+        <span class="block md:inline">links:</span>
+        <Link href={MAIL_URL}>Email</Link>
+        <span class="text-border">|</span>
+        {
+          PROFILE.links.map((link, i) => (
+            <span>
+              {i !== 0 && <span class="text-border">|</span>}
+              <Link href={link.url}>{link.label}</Link>
+            </span>
+          ))
+        }
+      </div>
+    </div>
+  </Box>
+</section>

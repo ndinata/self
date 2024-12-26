@@ -1,0 +1,20 @@
+---
+type Props = {
+  title: string;
+  id: string;
+};
+
+const { title, id } = Astro.props;
+---
+
+<section class="container flex flex-col gap-4 pt-6">
+  <span id={id}>
+    <h2 class="inline text-lg font-medium hover:text-primary">
+      <a href={`#${id}`} class="underline decoration-1 underline-offset-4">
+        {title}
+      </a>
+    </h2>
+  </span>
+
+  <slot />
+</section>

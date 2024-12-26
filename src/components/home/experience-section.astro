@@ -1,0 +1,86 @@
+---
+import Link from "@/components/link.astro";
+import { EXPERIENCE } from "@/config";
+import TitledSection from "./titled-section.astro";
+---
+
+<TitledSection title="experience" id="experience">
+  <table>
+    <tbody>
+      <tr>
+        <th>past work</th>
+        <td>
+          <span>Some of the projects I worked on in the past:</span>
+          {
+            EXPERIENCE.pastWork.projects.map((project, i) =>
+              // The following line must be in a single line; otherwise, there
+              // will be extra spaces between the labels and the commas.
+              // prettier-ignore
+              <span><Link href={project.url}>{project.label}</Link>{i !== EXPERIENCE.pastWork.projects.length - 1 ? ", " : "."}</span>,
+            )
+          }
+          <span>Please contact me for more details on my past experience!</span>
+        </td>
+      </tr>
+
+      <tr>
+        <th>toolkit</th>
+        <td>
+          <ul>
+            {
+              EXPERIENCE.tookit.map((kit) => (
+                <li class="bar-list-item">
+                  <span>{kit}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </td>
+      </tr>
+
+      <tr>
+        <th>product development</th>
+        <td>
+          <ul>
+            {
+              EXPERIENCE.product.map((product) => (
+                <li class="bar-list-item">
+                  <span>{product}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</TitledSection>
+
+<style>
+  tbody {
+    @apply flex flex-col gap-4 md:table-row-group;
+  }
+  tr {
+    @apply flex flex-col border md:table-row md:border;
+  }
+  th {
+    @apply border-b bg-muted p-4 text-left font-medium md:border-r;
+  }
+  td {
+    @apply p-4;
+  }
+  td ul {
+    display: inline;
+    text-wrap: unset;
+  }
+  td ul li {
+    display: inline;
+    line-height: 1.65;
+  }
+  td ul li.bar-list-item:not(:last-child)::after {
+    content: "|";
+    color: var(--border);
+    margin-left: 0.15rem;
+    margin-right: 0.15rem;
+  }
+</style>

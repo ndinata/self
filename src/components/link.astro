@@ -1,0 +1,23 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+import { cn } from "@/styles/utils";
+
+type Props = HTMLAttributes<"a">;
+
+const { href, class: propClass, target, rel, ...props } = Astro.props;
+---
+
+{
+  /*
+   * Mind the whitespace!
+   * Ref: https://github.com/withastro/astro/issues/6893#issuecomment-1521502761
+   */
+}
+<a
+  {...props}
+  href={href}
+  class={cn("text-primary md:hover:underline underline-offset-4", propClass)}
+  target={target || "_blank"}
+  rel={rel || "noopener noreferrer"}><slot /></a
+>

@@ -1,0 +1,61 @@
+---
+import Footer from "@/components/footer.astro";
+import Header from "@/components/header.astro";
+
+type Props = {
+  title: string;
+};
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta
+      name="description"
+      content="nico dinata — software engineer based in melbourne, au."
+    />
+  </head>
+  <body class="flex min-h-screen flex-col md:items-center">
+    <Header />
+    <main class="flex max-w-5xl flex-1 flex-col">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
+
+{
+  /*
+   * Sets the initial "dark" class if current device theme is dark.
+   * IMPORTANT: this script needs to be `is:inline` to disable Astro processing
+   * that causes the page to flash for a split second when the device is in dark
+   * mode.
+   */
+}
+<script is:inline>
+  if (
+    localStorage.getItem("theme") === "dark" ||
+    (!("theme" in localStorage) &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches)
+  ) {
+    document.documentElement.classList.add("dark");
+  } else {
+    document.documentElement.classList.remove("dark");
+  }
+</script>
+
+{/* Listens and reacts to the device's theme changes. */}
+<script>
+  window
+    .matchMedia("(prefers-color-scheme: dark)")
+    .addEventListener("change", (e) => {
+      document.documentElement.classList[e.matches ? "add" : "remove"]("dark");
+    });
+</script>
