@@ -9,12 +9,16 @@ type Props = HTMLAttributes<"fieldset"> & {
 };
 
 const { title, id, class: propClass, ...props } = Astro.props;
+
+const Legend = id ? "a" : "span";
 ---
 
 <fieldset {...props} id={id} class={cn("border p-0", propClass)}>
   <legend class="ml-4 px-2"
-    ><a href={`#${id}`} class="text-lg font-medium hover:text-primary"
-      >{title}</a
+    ><Legend
+      href={`#${id}`}
+      class={cn("text-lg font-medium", !!id && "hover:text-primary")}
+      >{title}</Legend
     ></legend
   >
   <slot />
