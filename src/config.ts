@@ -1,5 +1,5 @@
 export const SITE = Object.freeze({
-  year: "2024",
+  year: "2025",
 } as const);
 
 export const PROFILE = Object.freeze({
