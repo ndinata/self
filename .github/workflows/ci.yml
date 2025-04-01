@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  pull_request:
+    paths-ignore:
+      - "readme.md"
+      - ".vscode/**"
+      - ".helix/**"
+  workflow_dispatch:
+
+env:
+  NODE_VERSION: 22
+  PNPM_VERSION: 10
+
+jobs:
+  lint-and-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Install pnpm ${{ env.PNPM_VERSION }}
+        uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: Install Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm i
+
+      - name: pnpm fmt-check
+        run: pnpm fmt-check
+
+      - name: lint & check
+        run: pnpm lint && pnpm astro check
